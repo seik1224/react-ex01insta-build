@@ -5,8 +5,9 @@ const data = [
   {
     id: 1,
     profile: "Mario",
-    title: "내용은 data에서 가져오세요.",
-    content: "컨텐츠 너비는 460px 입니다. 모든 margin-bottom은 12px",
+    title: "nintendo product no.1",
+    content:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum",
     like: 0,
     comments: [],
   },
@@ -37,7 +38,7 @@ function App() {
         <div className="fixed w-[280px] p-3 h-full border-r border-gray-300 border-solid flex flex-col justify-between ">
           <div>
             <img
-              src={`${process.env.PUBLIC_URL}/logo.svg`}
+              src="logo.svg"
               className="App-logo w-[103px] m-3 mb-6"
               alt="logo"
             />
@@ -101,9 +102,6 @@ function App() {
 }
 
 function Card() {
-  let [likeimg, setLikeimg] = useState([true, true, true]);
-  let [like, setLike] = useState([0, 0, 0]);
-
   let obj = {
     title: "title : 내용은 object에서 가져오세요.",
     content: "content : 컨텐츠 너비는 460px 입니다. 모든 margin-bottom은 12px",
@@ -111,75 +109,46 @@ function Card() {
   return (
     <>
       <section className="w-full">
-        {data.map((v, i) => {
-          return (
-            <>
-              <div className="w-[460px] mt-8 mb-14 mx-auto">
-                <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center">
-                    <img
-                      src={`${process.env.PUBLIC_URL}/profile${eval(
-                        i + 1
-                      )}.jpg`}
-                      className="w-[32px] rounded-full"
-                      alt=""
-                    />
-                    <p className="pl-3">{data[i].profile}</p>
-                  </div>
-                  <img src="icon10.svg" alt="" />
-                </div>
-                <div className="mb-3">
-                  <img
-                    src={`${process.env.PUBLIC_URL}/thumb${eval(i + 1)}.jpg`}
-                    className="w-full"
-                    alt=""
-                  />
-                </div>
-                <div>
-                  <div className="mb-3">
-                    <button
-                      className={
-                        likeimg[i] === true
-                          ? "hover:opacity-35"
-                          : "hover:opacity-100"
-                      }
-                    >
-                      <img
-                        onClick={() => {
-                          let copy1 = [...like];
-                          likeimg[i] === true ? copy1[i]++ : copy1[i]--;
-                          setLike(copy1);
-                          let copy2 = [...likeimg];
-                          copy2[i] = !copy2[i];
-                          setLikeimg(copy2);
-                        }}
-                        src={
-                          likeimg[i] === true
-                            ? `${process.env.PUBLIC_URL}/icon11.svg`
-                            : `${process.env.PUBLIC_URL}/icon12.svg`
-                        }
-                        alt=""
-                      />
-                    </button>
-                  </div>
-                  <div>
-                    <p className="mb-3">
-                      좋아요 <span>{like[i]}</span>개
-                    </p>
-                    <h4 className="mb-3">{data[i].title}</h4>
-                    <p className="mb-3 text-base">{data[i].content}</p>
-                  </div>
-                  <div>
-                    <input
-                      className="w-full border-b border-solid border-gray-300 py-3"
-                      placeholder="댓글달기"
-                    ></input>
-                  </div>
-                </div>
-              </div>
-            </>
-          );
-        })}
+        <div className="w-[460px] mt-8 mb-14 mx-auto">
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center">
+              <img
+                src={`${process.env.PUBLIC_URL}/profile1.jpg`}
+                className="w-[32px] rounded-full"
+                alt=""
+              />
+              <p className="pl-3">Mario</p>
+            </div>
+            <img src="icon10.svg" alt="" />
+          </div>
+          <div className="mb-3">
+            <img
+              src={`${process.env.PUBLIC_URL}/thumb1.jpg`}
+              className="w-full"
+              alt=""
+            />
+          </div>
+          <div>
+            <div className="mb-3">
+              <button>
+                <img src={`${process.env.PUBLIC_URL}/icon11.svg`} alt="" />
+              </button>
+            </div>
+            <div>
+              <p className="mb-3">
+                좋아요 <span>0</span>개
+              </p>
+              <h4 className="mb-3">{obj.title}</h4>
+              <p className="mb-3 text-base">{obj.content}</p>
+            </div>
+            <div>
+              <input
+                className="w-full border-b border-solid border-gray-300 py-3"
+                placeholder="댓글달기"
+              ></input>
+            </div>
+          </div>
+        </div>
       </section>
     </>
   );

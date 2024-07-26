@@ -5,8 +5,9 @@ const data = [
   {
     id: 1,
     profile: "Mario",
-    title: "내용은 data에서 가져오세요.",
-    content: "컨텐츠 너비는 460px 입니다. 모든 margin-bottom은 12px",
+    title: "nintendo product no.1",
+    content:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum",
     like: 0,
     comments: [],
   },
@@ -101,13 +102,6 @@ function App() {
 }
 
 function Card() {
-  let [likeimg, setLikeimg] = useState([true, true, true]);
-  let [like, setLike] = useState([0, 0, 0]);
-
-  let obj = {
-    title: "title : 내용은 object에서 가져오세요.",
-    content: "content : 컨텐츠 너비는 460px 입니다. 모든 margin-bottom은 12px",
-  };
   return (
     <>
       <section className="w-full">
@@ -137,34 +131,17 @@ function Card() {
                 </div>
                 <div>
                   <div className="mb-3">
-                    <button
-                      className={
-                        likeimg[i] === true
-                          ? "hover:opacity-35"
-                          : "hover:opacity-100"
-                      }
-                    >
+                    <button>
                       <img
-                        onClick={() => {
-                          let copy1 = [...like];
-                          likeimg[i] === true ? copy1[i]++ : copy1[i]--;
-                          setLike(copy1);
-                          let copy2 = [...likeimg];
-                          copy2[i] = !copy2[i];
-                          setLikeimg(copy2);
-                        }}
-                        src={
-                          likeimg[i] === true
-                            ? `${process.env.PUBLIC_URL}/icon11.svg`
-                            : `${process.env.PUBLIC_URL}/icon12.svg`
-                        }
+                        onClick={() => {}}
+                        src={`${process.env.PUBLIC_URL}/icon11.svg`}
                         alt=""
                       />
                     </button>
                   </div>
                   <div>
                     <p className="mb-3">
-                      좋아요 <span>{like[i]}</span>개
+                      좋아요 <span>0</span>개
                     </p>
                     <h4 className="mb-3">{data[i].title}</h4>
                     <p className="mb-3 text-base">{data[i].content}</p>
